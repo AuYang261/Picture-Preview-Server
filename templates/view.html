@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Picture Viewer</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <div id="root">
+        <div class="image">
+            <img id="view" src="/file/{{ image }}" alt="{{ image }}">
+            <p id="text">{{ image }}</p>
+            <div id="group">
+                <div class="button half-width" onclick="window.location.href='/view/{{ prev_image }}'">
+                    <p>上一张</p>
+                </div>
+                <div class="button half-width" onclick="window.location.href='/view/{{ next_image }}'">
+                    <p>下一张</p>
+                </div>
+                <a class="button full-width" href="/file/{{ image }}" download="{{ image }}">
+                    <div>
+                        <p>保存</p>
+                    </div>
+                </a>
+                <div class="button back-button full-width" onclick="window.location.href='/#{{ image }}'">
+                    <p>返回</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

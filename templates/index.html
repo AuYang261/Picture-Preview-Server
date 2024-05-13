@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Picture Viewer</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <div id="root">
+        {% for image in images %}
+        <div id="{{ image }}" class="image">
+            <a href="/view/{{ image }}">
+                <img src="/preview/{{ image }}" alt="{{ image }}">
+                <p>{{ image }}</p>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</body>

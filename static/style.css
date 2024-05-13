@@ -1,0 +1,73 @@
+.button {
+    background-color: #8084f4;
+    /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    /* display: inline; */
+    font-size: 16px;
+    margin: 40px 0px;
+    cursor: pointer;
+    border-radius: 12px;
+    float: left;
+    /* 居中 */
+    display: flex;
+    /* 水平居中 */
+    justify-content: center;
+}
+
+.back-button {
+    background-color: red;
+}
+
+.half-width {
+    /* 计算宽度，减去总外边距 */
+    width: calc(50% - 20px);
+    /* 边框和内边距包含在宽度内 */
+    box-sizing: border-box;
+    /* 添加一些内边距 */
+    padding: 10px;
+    /* 添加外边距 */
+    margin: 10px;
+    box-sizing: border-box;
+}
+
+.full-width {
+    /* 计算宽度，减去总外边距 */
+    width: calc(100% - 20px);
+    /* 添加一些内边距 */
+    padding: 10px;
+    /* 添加外边距 */
+    margin: 10px;
+}
+
+#group {
+    display: flex;
+    justify-content: space-around;
+    /* 允许元素换行 */
+    flex-wrap: wrap;
+    margin-left: -10px;
+    /* 添加负值外边距以抵消第一个和最后一个元素的外边距 */
+    margin-right: -10px;
+}
+
+p {
+    font-size: 20px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.image {
+    display: block;
+    /* 居中显示图片 */
+    margin: 0 auto;
+    width: 100%;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
