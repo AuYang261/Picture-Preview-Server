@@ -1,11 +1,14 @@
 from flask import Flask, render_template
 import os
 from PIL import Image
+from config import BaseConfig
 
 app = Flask(__name__)
+app.config.from_object(BaseConfig)
+
 # set the static folder to the current dir
 app.static_folder = "static"
-picture_path = r"."
+picture_path = app.config.get("PICTURE_PATH", ".")
 
 
 def get_files(path1, path2=""):
@@ -33,9 +36,6 @@ def index():
 
 @app.route("/preview/<path:filename>")
 def preview(filename):
-    # generate the preview image
-    img = Image.open(os.path.join(picture_path, filename))
-    img.thumbnail((720, 720))
     if not os.path.exists(
         os.path.join(app.static_folder, r"preview", os.path.basename(filename))
     ):
@@ -44,6 +44,9 @@ def preview(filename):
             exist_ok=True,
         )
     if not os.path.exists(os.path.join(app.static_folder, r"preview", filename)):
+        # generate the preview image
+        img = Image.open(os.path.join(picture_path, filename))
+        img.thumbnail((720, 720))
         img.save(os.path.join(app.static_folder, r"preview", filename))
     with open(os.path.join(app.static_folder, r"preview", filename), "rb") as f:
         return f.read()
@@ -79,4 +82,8 @@ def static_file(filename):
 
 
 if __name__ == "__main__":
-    app.run(port=80, host="0.0.0.0", debug=True)
+    app.run(
+        port=app.config.get("PROT", 80),
+        host=app.config.get("HOST", "0.0.0.0"),
+        debug=app.config.get("DEBUG", True),
+    )
